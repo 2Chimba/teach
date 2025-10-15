@@ -1,41 +1,85 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+import { useState } from "react";
+import "./App.css";
+import "./index.css";
+
+interface Task {
+  id: number;
+  text: string;
+  done: boolean;
+}
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [tasks, setTasks] = useState<Task[]>([]);  
+  const [todo, setTodo] = useState(0);  
+  const [text, setText] = useState('');  
+
+  const toggleDone = (id: number) => {
+    setTasks(tasks.map(task =>
+      task.id === id ? { ...task, done: !task.done } : task
+    ));
+  };
+
+  const addItem = () => {
+    const newItem = {
+      id: todo,
+      text: `${text}`,
+      done: false
+    };
+    if(text.trim() != ""){
+      setTasks([...tasks, newItem]);
+      setTodo(todo + 1); 
+      setText ('');
+    }
+  };
+
+  const deleteItem = (id: number) => {
+    setTasks(tasks.filter(task => task.id !== id));
+  };
+
+  const enter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter'){
+      addItem();
+    }
+  }
+
+  const completedCount = tasks.filter(task => task.done).length;
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="input__area">
+        <input type = 'text'
+             value = {text} 
+             onKeyDown={enter} 
+             onChange={(e) => setText(e.target.value)} 
+             className="input__text"
+             placeholder="Введите задачу"
+             autoFocus>    
+        </input>
+        <button className = "button__add" onClick={addItem}>Создать задачу</button>
       </div>
-      <h1>Vite12 + React23</h1>
-
-
-      <div className="card">
-
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-
-        </button>
-
-        <p>
-
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <p>Количество задач: {tasks.length}</p>
+      <p>Выполненных задач: {completedCount}</p>
+      {tasks.length === 0 && <p><h2>Список задач пуст</h2></p>}
+      {tasks.map((item, index) => (
+        <div key={item.id} className={`cart${item.done ? " done" : ""}`}>
+          <div className="cart__number">{index + 1})</div>
+          <div className="cart__checkbox">
+            <input type = "checkbox" 
+                 name="done" 
+                 value="done" 
+                 id={`done-${item.id}`}
+                 checked={item.done}
+                 onChange={() => toggleDone(item.id)}/>
+          </div>
+          <div className="cart__text">
+            {item.text}
+          </div>
+          <button className="button__delete" onClick={() => deleteItem(item.id)}>X</button>
+        </div>
+      ))}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
