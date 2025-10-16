@@ -11,8 +11,17 @@ interface Task {
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);  
+  const [filter, setFilter] = useState("all");  
   const [todo, setTodo] = useState(0);  
   const [text, setText] = useState('');  
+
+  
+  const visibleTasks = tasks.filter(task => {
+    if (filter === "done") return task.done;
+    if (filter === "notDone") return !task.done;
+    return true; 
+  });
+
 
   const toggleDone = (id: number) => {
     setTasks(tasks.map(task =>
@@ -43,6 +52,8 @@ function App() {
     }
   }
 
+  
+
   const completedCount = tasks.filter(task => task.done).length;
 
   return (
@@ -58,26 +69,37 @@ function App() {
         </input>
         <button className = "button__add" onClick={addItem}>Создать задачу</button>
       </div>
-      <p>Количество задач: {tasks.length}</p>
-      <p>Выполненных задач: {completedCount}</p>
-      {tasks.length === 0 && <p><h2>Список задач пуст</h2></p>}
-      {tasks.map((item, index) => (
+
+      <div>
+        <p>Количество задач: {tasks.length}</p>
+        <p>Выполненных задач: {completedCount}</p>
+      </div>
+      
+      {visibleTasks.length === 0 && <p><h2>Список задач пуст</h2></p>}
+      
+      {visibleTasks.length !== 0 &&<ul className = 'filter'>
+        <li><button className="filter__button all" onClick={() => setFilter("all")}>Все задачи</button></li>
+        <li><button className="filter__button" onClick={() => setFilter("done")}>Завершённые</button></li>
+        <li><button className="filter__button notDone" onClick={() => setFilter("notDone")}>В процессе</button></li>
+      </ul>}
+
+      {visibleTasks.map((item, index) => (
         <div key={item.id} className={`cart${item.done ? " done" : ""}`}>
           <div className="cart__number">{index + 1})</div>
           <div className="cart__checkbox">
             <input type = "checkbox" 
-                 name="done" 
-                 value="done" 
-                 id={`done-${item.id}`}
-                 checked={item.done}
-                 onChange={() => toggleDone(item.id)}/>
+                   name="done" 
+                   value="done" 
+                   id={`done-${item.id}`}
+                   checked={item.done}
+                   onChange={() => toggleDone(item.id)}/>
           </div>
           <div className="cart__text">
             {item.text}
           </div>
           <button className="button__delete" onClick={() => deleteItem(item.id)}>X</button>
         </div>
-      ))}
+        ))}
     </>
   );
 }

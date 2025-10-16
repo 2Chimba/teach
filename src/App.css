@@ -95,3 +95,27 @@
   align-items: center;
   margin: 20px 0 40px 0;
 }
+
+.filter{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 400px;
+  height: 30px;
+}
+
+.filter__button{
+  border-radius: 0;
+  width: auto;
+  height: 30px;
+  background-color: aqua;
+}
+
+.all{
+  border-radius: 15px 0 0 15px;
+}
+
+.notDone{
+  border-radius: 0 15px 15px 0;
+}
