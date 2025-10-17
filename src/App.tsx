@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import "./index.css";
 
@@ -10,18 +10,19 @@ interface Task {
 }
 
 function App() {
-  const [tasks, setTasks] = useState<Task[]>([]);  
+  const [tasks, setTasks] = useState<Task[]>(() => {
+    const saved = localStorage.getItem('tasks');
+    return saved ? JSON.parse(saved) : [];
+  });;  
   const [filter, setFilter] = useState("all");  
   const [todo, setTodo] = useState(0);  
   const [text, setText] = useState('');  
-
   
   const visibleTasks = tasks.filter(task => {
     if (filter === "done") return task.done;
     if (filter === "notDone") return !task.done;
     return true; 
   });
-
 
   const toggleDone = (id: number) => {
     setTasks(tasks.map(task =>
@@ -52,9 +53,11 @@ function App() {
     }
   }
 
-  
-
   const completedCount = tasks.filter(task => task.done).length;
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
   return (
     <>
