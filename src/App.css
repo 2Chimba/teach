@@ -119,3 +119,20 @@
 .notDone{
   border-radius: 0 15px 15px 0;
 }
+
+.filter__buttons{
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  width: 900px;
+  height: auto;
+  justify-content: space-between;
+}
+
+.delete__buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 41%;
+  height: auto;
+}

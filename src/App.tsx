@@ -47,11 +47,15 @@ function App() {
     setTasks(tasks.filter(task => task.id !== id));
   };
 
+  const deleteDone = (doneStatus: boolean) => {
+    setTasks(tasks.filter(task => task.done !== doneStatus));
+  };
+
   const enter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter'){
       addItem();
     }
-  }
+  };
 
   const completedCount = tasks.filter(task => task.done).length;
 
@@ -72,6 +76,18 @@ function App() {
         </input>
         <button className = "button__add" onClick={addItem}>Создать задачу</button>
       </div>
+      
+      <div className="filter__buttons">
+        <ul className = 'filter'>
+          <li><button className="filter__button all" onClick={() => setFilter("all")}>Все задачи</button></li>
+          <li><button className="filter__button" onClick={() => setFilter("done")}>Завершённые</button></li>
+          <li><button className="filter__button notDone" onClick={() => setFilter("notDone")}>В процессе</button></li>
+        </ul>
+        <ul className="delete__buttons">
+          <li><button className="filter__button all" onClick={()=>deleteDone(true)}>Удалить готовые</button></li>
+          <li><button className="filter__button notDone" onClick={() => deleteDone(false)}>Удалить в процессе</button></li>
+        </ul>
+      </div>
 
       <div>
         <p>Количество задач: {tasks.length}</p>
@@ -79,12 +95,6 @@ function App() {
       </div>
       
       {visibleTasks.length === 0 && <p><h2>Список задач пуст</h2></p>}
-      
-      {visibleTasks.length !== 0 &&<ul className = 'filter'>
-        <li><button className="filter__button all" onClick={() => setFilter("all")}>Все задачи</button></li>
-        <li><button className="filter__button" onClick={() => setFilter("done")}>Завершённые</button></li>
-        <li><button className="filter__button notDone" onClick={() => setFilter("notDone")}>В процессе</button></li>
-      </ul>}
 
       {visibleTasks.map((item, index) => (
         <div key={item.id} className={`cart${item.done ? " done" : ""}`}>
