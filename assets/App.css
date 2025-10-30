@@ -13,7 +13,7 @@
   color: #888;
 }
 
-.input__text{
+.input__text {
   display: flex;
   padding-left: 25px;
   box-sizing: border-box;
@@ -24,24 +24,26 @@
   transition: border-color 0.25s;
 }
 
-.input__text:focus{
+.input__text:focus {
   outline: none;
   border: 2px solid #646cff;
 }
 
-.cart{
+.cart {
+  position: relative;
   border-radius: 20px;
   margin: 5px;
   display: flex;
   box-sizing: border-box;
   padding: 0 50px 0 30px;
   align-items: center;
-  justify-content:left;
+  justify-content: flex-start;
   width: 80%;
   height: 50px;
   border: 2px solid #4cfff0aa;
+  transition: all 0.5s;
 }
-.cart__number{
+.cart__number {
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -49,54 +51,75 @@
   width: 40px;
   height: 100%;
 }
-.cart__checkbox{
+.cart__checkbox {
   width: 50px;
-  height: 100%;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.cart__text{
+.cart__text {
   box-sizing: border-box;
   padding-left: 20px;
   display: flex;
   align-items: center;
   box-sizing: border-box;
   padding-right: auto;
-  width: 85%;
+  width: auto;
   height: 100%;
 }
-.done{
-  opacity: 0.5;
+.done {
   background-color: rgb(185, 175, 175);
 }
 .done .cart__text {
   text-decoration: line-through;
 }
 
-.button__add{
+.input__editing {
+  padding-left: 20px;
+}
+.editingArea {
+  position: absolute;
+  right: 18%;
+}
+
+.button__add {
   background-color: #4cfff0aa;
   height: 50px;
   border-radius: 0 25px 25px 0;
 }
-.button__delete{
+
+.container__cartButtons {
+  width: 150px;
+  height: auto;
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: auto;
+}
+.cart__button {
+  display: flex;
+  background-color: rgba(117, 190, 218, 0);
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
   margin-left: auto;
-  border: 1px solid red;
-  border-radius: 50%;
+  transition: background-color 0.5s;
+  border: none;
+}
+.cart__button:hover,
+.cart__button:active {
+  color: red;
+  background-color: rgba(117, 190, 218, 0);
 }
 
-.input__area{
+.input__area {
   display: flex;
   align-items: center;
   margin: 20px 0 40px 0;
 }
 
-.filter{
+.filter {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -105,22 +128,22 @@
   height: 30px;
 }
 
-.filter__button{
+.filter__button {
   border-radius: 0;
   width: auto;
   height: 30px;
-  background-color: aqua;
+  background-color: #4cfff0aa;
 }
 
-.all{
+.all {
   border-radius: 15px 0 0 15px;
 }
 
-.notDone{
+.notDone {
   border-radius: 0 15px 15px 0;
 }
 
-.filter__buttons{
+.filter__buttons {
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -129,7 +152,7 @@
   justify-content: space-between;
 }
 
-.delete__buttons{
+.delete__buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
