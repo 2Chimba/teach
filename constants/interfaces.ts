@@ -39,7 +39,7 @@ export interface IEditingText {
   item: Task;
   editingTaskText: string;
   setEditingTaskText: (currentText: string) => void;
-  saveTask: (id: number) => void;
+  saveTask: (e: React.KeyboardEvent<HTMLInputElement>, id: number) => void;
 }
 
 export interface IEditButton {
@@ -58,7 +58,7 @@ export interface ICart {
   editingTaskId: number | null;
   editingTaskText: string;
   setEditingTaskText: (currentText: string) => void;
-  saveTask: (id: number) => void;
+  saveTask: (e: React.KeyboardEvent<HTMLInputElement>, id: number) => void;
   handleEditClick: (id: number, currentText: string) => void;
   deleteItem: (id: number) => void;
 }

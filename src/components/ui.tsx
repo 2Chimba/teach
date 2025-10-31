@@ -42,7 +42,7 @@ export const EditingText = ({
           className="input__editing"
           value={editingTaskText}
           onChange={(e) => setEditingTaskText(e.target.value)}
-          onBlur={() => saveTask(item.id)}
+          onKeyDown={(e) => saveTask(e, item.id)}
           autoFocus
           initial={{ width: 30, height: 30, borderRadius: 15 }}
           animate={{ width: 300, height: 30, borderRadius: 15 }}

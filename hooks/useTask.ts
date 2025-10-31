@@ -22,13 +22,15 @@ export const useMyHook = () => {
     setEditingTaskText(currentText);
   };
 
-  const saveTask = (id: number) => {
-    setTasks(
-      tasks.map((task) =>
-        task.id === id ? { ...task, text: editingTaskText } : task
-      )
-    );
-    setEditingTaskId(null);
+  const saveTask = (e: React.KeyboardEvent<HTMLInputElement>, id: number) => {
+    if (e.key === "Enter") {
+      setTasks(
+        tasks.map((task) =>
+          task.id === id ? { ...task, text: editingTaskText } : task
+        )
+      );
+      setEditingTaskId(null);
+    }
   };
 
   const visibleTasks = tasks.filter((task) => {
