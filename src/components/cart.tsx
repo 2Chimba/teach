@@ -16,25 +16,17 @@ export const Cart = ({
   setEditingTaskText,
   saveTask,
   handleEditClick,
-  deleteItem
+  deleteItem,
 }: ICart) => {
   return (
-    
     <LayoutGroup>
       {visibleTasks.map((item, index) => (
         <motion.div
-          // initial={{ opacity: 0, x: -100, }}
-          // animate={{ opacity: 1, x: 0 }}
-          // exit={{ opacity: 0, x: 100 }}
-          // transition={{ duration: 0.5 }}
-
-        
           layout
-          initial={{ opacity: 0, x: -100,}}
-              animate={{ opacity: 1, x: 0, }}
-              exit={{ opacity: 0, y: -100 }}
-              transition={{ duration: 0.3 }}
-
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, y: -100 }}
+          transition={{ duration: 0.3 }}
           key={item.id}
           className={`cart${item.done ? " done" : ""}`}
         >
