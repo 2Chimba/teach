@@ -1,0 +1,14 @@
+.cart__button {
+  display: flex;
+  background-color: rgba(117, 190, 218, 0);
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  transition: background-color 0.5s;
+  border: none;
+}
+.cart__button:hover,
+.cart__button:active {
+  color: red;
+  background-color: rgba(117, 190, 218, 0);
+}

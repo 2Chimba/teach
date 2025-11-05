@@ -1,0 +1,26 @@
+.input__area {
+  display: flex;
+  align-items: center;
+  margin: 20px 0 40px 0;
+}
+
+.input__text {
+  display: flex;
+  padding-left: 25px;
+  box-sizing: border-box;
+  width: 400px;
+  height: 50px;
+  border-radius: 25px 0 0 25px;
+  border: 2px solid #4cfff0aa;
+  transition: border-color 0.25s;
+}
+.input__text:focus {
+  outline: none;
+  border: 2px solid #646cff;
+}
+
+.button__add {
+  background-color: #4cfff0aa;
+  height: 50px;
+  border-radius: 0 25px 25px 0;
+}

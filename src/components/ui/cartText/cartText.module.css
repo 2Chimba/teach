@@ -1,0 +1,14 @@
+.cart__text {
+  box-sizing: border-box;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding-right: auto;
+  width: auto;
+  height: 100%;
+}
+
+.done {
+  text-decoration: line-through;
+}

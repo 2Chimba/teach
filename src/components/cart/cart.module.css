@@ -1,0 +1,37 @@
+.cart {
+  position: relative;
+  border-radius: 20px;
+  margin: 5px;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 50px 0 30px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 80%;
+  height: 50px;
+  border: 2px solid #4cfff0aa;
+  transition: all 0.5s;
+}
+
+.cart__number {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding-right: auto;
+  width: 40px;
+  height: 100%;
+}
+
+.done {
+  background-color: rgb(185, 175, 175);
+}
+
+.container__cartButtons {
+  width: 150px;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: auto;
+}
