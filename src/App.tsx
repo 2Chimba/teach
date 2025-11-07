@@ -1,11 +1,11 @@
-import "../assets/App.css";
-import "../assets/index.css";
-import { useMyHook } from "../hooks/useTask.ts";
-import { Cart } from "./components/cart/cart.tsx";
-import { InputArea } from "./components/elements/inputArea/inputArea.tsx";
-import { FilterButtons } from "./components/elements/filterButtons/filterButtons.tsx";
-import { QuanityInformation } from "./components/elements/QuanityInformation/quanityInformation.tsx";
-import { EmptyTasks } from "./components/elements/EmptyTasks/emptyTasks.tsx";
+import './assets/styles/App.css'
+import './assets/styles/index.css'
+import { useMyHook } from "./hooks/useTask.ts";
+import { Cart } from "./modules/cart/cart.tsx";
+import { InputArea } from "./modules/inputArea/inputArea.tsx";
+import { FilterButtons } from "./modules/filterButtons/filterButtons.tsx";
+import { QuanityInformation } from "./modules/QuanityInformation/quanityInformation.tsx";
+import { EmptyTasks } from "./modules/EmptyTasks/emptyTasks.tsx";
 
 function App() {
   const {

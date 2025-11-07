@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import type { FilterButton } from "../../../../constants/interfaces";
+import type { FilterButton } from "../../Interfaces/interfaces";
 import styles from "./filterButtons.module.css";
 
 export const FilterButtons = ({ setFilter, deleteDone }: FilterButton) => {

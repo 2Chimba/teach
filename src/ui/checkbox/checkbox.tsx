@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import type { ICheckbox } from "../../../../constants/interfaces";
+import type { ICheckbox } from "../../Interfaces/interfaces";
 import styles from "./checkbox.module.css";
 
 export const CartCheckbox = ({ item, toggleDone }: ICheckbox) => {

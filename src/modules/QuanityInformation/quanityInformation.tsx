@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import type { Quanity } from "../../../../constants/interfaces";
+import type { Quanity } from "../../Interfaces/interfaces";
 
 export const QuanityInformation = ({ tasks, completedCount }: Quanity) => {
   return (

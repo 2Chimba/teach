@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import type { Empty } from "../../../../constants/interfaces";
+import type { Empty } from "../../Interfaces/interfaces";
 
 export const EmptyTasks = ({ visibleTasks }: Empty) => {
   return (

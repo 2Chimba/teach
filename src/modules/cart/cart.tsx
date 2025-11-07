@@ -1,10 +1,10 @@
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
-import { CartCheckbox } from "../ui/checkbox/checkbox";
-import { CartText } from "../ui/cartText/cartText";
-import { EditingText } from "../ui/editingText/editingText";
-import { EditButton } from "../ui/buttons/editButton/editButton";
-import { DeleteButton } from "../ui/buttons/deleteButton/deleteButton";
-import type { ICart } from "../../../constants/interfaces";
+import { CartCheckbox } from "../../ui/checkbox/checkbox";
+import { CartText } from "../../ui/cartText/cartText";
+import { EditingText } from "../../ui/editingText/editingText";
+import { EditButton } from "../../ui/buttons/editButton/editButton";
+import { DeleteButton } from "../../ui/buttons/deleteButton/deleteButton";
+import type { ICart } from "../../Interfaces/interfaces";
 import styles from "./cart.module.css";
 
 export const Cart = ({

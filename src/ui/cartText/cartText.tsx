@@ -1,4 +1,4 @@
-import type { IText } from "../../../../constants/interfaces";
+import type { IText } from "../../Interfaces/interfaces";
 import styles from "./cartText.module.css";
 
 export const CartText = ({ item }: IText) => {

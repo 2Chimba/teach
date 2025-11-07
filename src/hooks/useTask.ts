@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import type { Task } from "../constants/interfaces";
+import type { Task } from "../Interfaces/interfaces";
 
 export const useMyHook = () => {
   const [filter, setFilter] = useState("all");

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import type { IEditButton } from "../../../../../constants/interfaces";
+import type { IEditButton } from "../../../Interfaces/interfaces";
 import { SquarePen } from "lucide-react";
 import styles from "../button.module.css";
 

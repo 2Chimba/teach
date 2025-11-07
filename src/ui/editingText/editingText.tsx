@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import type { IEditingText } from "../../../../constants/interfaces";
+import type { IEditingText } from "../../Interfaces/interfaces";
 import styles from "./editingText.module.css";
 
 export const EditingText = ({

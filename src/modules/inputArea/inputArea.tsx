@@ -1,4 +1,4 @@
-import type { InputAreaProps } from "../../../../constants/interfaces";
+import type { InputAreaProps } from "../../Interfaces/interfaces";
 import { motion } from "framer-motion";
 import styles from "./inputArea.module.css";
 

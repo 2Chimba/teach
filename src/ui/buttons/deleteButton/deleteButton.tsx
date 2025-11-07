@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Trash2 } from "lucide-react";
-import type { IDeleteButton } from "../../../../../constants/interfaces";
+import type { IDeleteButton } from "../../../Interfaces/interfaces";
 import styles from "../button.module.css";
 
 export const DeleteButton = ({ deleteItem, item }: IDeleteButton) => {
