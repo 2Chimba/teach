@@ -2,8 +2,17 @@ export interface Task {
   id: number;
   text: string;
   done: boolean;
+  favorite: boolean
 }
 
+export interface TaskState {
+  tasks: Task[];
+  filter: "all" | "done" | "notDone";
+  todoId: number;
+  textInput: string;
+  editingTaskId: number | null;
+  editingTaskText: string;
+}
 export interface InputAreaProps {
   text: string;
   enter: (e: React.KeyboardEvent<HTMLInputElement>) => void;
@@ -12,7 +21,7 @@ export interface InputAreaProps {
 }
 
 export interface FilterButton {
-  setFilter: (value: string) => void;
+  setFilter: (value: "all" | "done" | "notDone") => void;
   deleteDone: (value: boolean) => void;
 }
 
