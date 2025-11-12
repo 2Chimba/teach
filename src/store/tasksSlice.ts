@@ -2,7 +2,10 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { TaskState } from "../Interfaces/interfaces";
 
 const initialState: TaskState = {
-  tasks: JSON.parse(localStorage.getItem("tasks") || "[]"),
+  tasks: (() => {
+    const saved = localStorage.getItem("tasks");
+    return saved ? JSON.parse(saved) : [];
+  })(),
   filter: "all",
   todoId: 0,
   textInput: "",
@@ -63,17 +66,19 @@ const tasksSlice = createSlice({
   },
 });
 
-export const {
-  setFilter,
-  setTextInput,
-  setTodoId,
-  addTask,
-  toggleTaskDone,
-  deleteTask,
-  deleteDoneTasks,
-  setEditingTask,
-  setEditingTaskText,
-  saveTask,
-} = tasksSlice.actions;
+export const { actions, reducer } = tasksSlice
 
-export default tasksSlice.reducer;
+// export const {
+//   setFilter,
+//   setTextInput,
+//   setTodoId,
+//   addTask,
+//   toggleTaskDone,
+//   deleteTask,
+//   deleteDoneTasks,
+//   setEditingTask,
+//   setEditingTaskText,
+//   saveTask,
+// } = tasksSlice.actions;
+
+// export default tasksSlice.reducer;

@@ -5,59 +5,53 @@ import { InputArea } from "./modules/inputArea/inputArea.tsx";
 import { FilterButtons } from "./modules/filterButtons/filterButtons.tsx";
 import { QuanityInformation } from "./modules/QuanityInformation/quanityInformation.tsx";
 import { EmptyTasks } from "./modules/EmptyTasks/emptyTasks.tsx";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import React from "react";
-import {
-  setFilter,
-  setTextInput,
-  addTask,
-  toggleTaskDone,
-  deleteTask,
-  deleteDoneTasks,
-  setEditingTask,
-  setEditingTaskText,
-  saveTask,
-} from "./store/tasksSlice.ts";
 import type { RootState } from "./store/store.ts";
+import { useActions } from "./hooks/useActions.ts";
+import { useMemo } from "react";
+import { useEffect } from "react";
 
 function App() {
-  const dispatch = useDispatch();
+  const {
+    saveTask,
+    setEditingTask,
+    setEditingTaskText,
+    addTask,
+    setTextInput,
+    setFilter,
+    deleteTask,
+    deleteDoneTasks,
+    toggleTaskDone,
+  } = useActions();
 
   const { tasks, filter, textInput, editingTaskId, editingTaskText } =
     useSelector((state: RootState) => state.taskState);
 
-  const handleSetFilter = (filter: "all" | "done" | "notDone") =>
-    dispatch(setFilter(filter));
-  const handleDeleteDone = (done: boolean) => dispatch(deleteDoneTasks(done));
-  const handleToggleTask = (id: number) => dispatch(toggleTaskDone(id));
-  const handleDeleteTask = (id: number) => dispatch(deleteTask(id));
+  const completedCount = tasks.filter((task) => task.done).length;
+
   const handleSetEditingTask = (id: number, text: string) =>
-    dispatch(setEditingTask({ id, text }));
-  const handleSaveTaskOnKeyDown = (
-    e: React.KeyboardEvent<HTMLInputElement>,
-    id: number
-  ) => {
+    setEditingTask({ id, text });
+
+  const handleSaveTaskOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, id: number) => {
     if (e.key === "Enter") {
-      dispatch(saveTask(id));
+      saveTask(id);
     }
   };
 
-  const handleSetEditingTaskText = (text: string) =>
-    dispatch(setEditingTaskText(text));
-
-  const handleSetText = (newText: string) => dispatch(setTextInput(newText));
-  const handleAddItem = () => {
-    if (textInput.trim() !== "") {
-      dispatch(addTask());
-    }
-  };
   const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleAddItem();
     }
   };
 
-  const visibleTasks = React.useMemo(() => {
+  const handleAddItem = () => {
+    if (textInput.trim() !== "") {
+      addTask();
+    }
+  };
+
+  const visibleTasks = useMemo(() => {
     switch (filter) {
       case "done":
         return tasks.filter((task) => task.done);
@@ -68,21 +62,20 @@ function App() {
     }
   }, [tasks, filter]);
 
-  const completedCount = tasks.filter((task) => task.done).length;
-
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+  
   return (
     <>
       <InputArea
         text={textInput}
         enter={handleEnter}
-        setText={handleSetText}
+        setText={setTextInput}
         addItem={handleAddItem}
       />
 
-      <FilterButtons
-        setFilter={handleSetFilter}
-        deleteDone={handleDeleteDone}
-      />
+      <FilterButtons setFilter={setFilter} deleteDone={deleteDoneTasks} />
 
       <QuanityInformation tasks={tasks} completedCount={completedCount} />
 
@@ -90,13 +83,13 @@ function App() {
 
       <Cart
         visibleTasks={visibleTasks}
-        toggleDone={handleToggleTask}
+        toggleDone={toggleTaskDone}
         editingTaskId={editingTaskId}
         editingTaskText={editingTaskText}
-        setEditingTaskText={handleSetEditingTaskText}
+        setEditingTaskText={setEditingTaskText}
         saveTask={handleSaveTaskOnKeyDown}
         handleEditClick={handleSetEditingTask}
-        deleteItem={handleDeleteTask}
+        deleteItem={deleteTask}
       />
     </>
   );

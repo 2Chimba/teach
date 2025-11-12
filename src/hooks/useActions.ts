@@ -1,6 +1,13 @@
-// import { useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
+import { bindActionCreators } from "redux";
+import { actions } from "../store/tasksSlice";
 
-// export const useActions = () => {
-//   const dispatch = useDispatch();
+const rootActions = {
+  ...actions
+}
 
-// }
+export const useActions = () => {
+  const dispatch = useDispatch();
+  
+  return bindActionCreators(rootActions, dispatch);
+}
