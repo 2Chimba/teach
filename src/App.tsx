@@ -51,7 +51,7 @@ function App() {
     }
   };
 
-  const visibleTasks = useMemo(() => {
+  const filteredTasks = useMemo(() => {
     switch (filter) {
       case "done":
         return tasks.filter((task) => task.done);
@@ -79,10 +79,10 @@ function App() {
 
       <QuanityInformation tasks={tasks} completedCount={completedCount} />
 
-      <EmptyTasks visibleTasks={visibleTasks} />
+      <EmptyTasks visibleTasks={filteredTasks} />
 
       <Cart
-        visibleTasks={visibleTasks}
+        filteredTasks={filteredTasks}
         toggleDone={toggleTaskDone}
         editingTaskId={editingTaskId}
         editingTaskText={editingTaskText}

@@ -1,4 +1,4 @@
-export interface Task {
+interface Task {
   id: number;
   text: string;
   done: boolean;
@@ -62,7 +62,7 @@ export interface IDeleteButton {
 }
 
 export interface ICart {
-  visibleTasks: Task[];
+  filteredTasks: Task[];
   toggleDone: (id: number) => void;
   editingTaskId: number | null;
   editingTaskText: string;

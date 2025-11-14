@@ -13,20 +13,20 @@ const initialState: TaskState = {
   editingTaskText: "",
 };
 
-const tasksSlice = createSlice({
+export const tasksSlice = createSlice({
   name: "tasks",
   initialState,
   reducers: {
-    setFilter(state, action: PayloadAction<"all" | "done" | "notDone">) {
+    setFilter:(state, action: PayloadAction<"all" | "done" | "notDone">) => {
       state.filter = action.payload;
     },
-    setTextInput(state, action: PayloadAction<string>) {
+    setTextInput: (state, action: PayloadAction<string>) => {
       state.textInput = action.payload;
     },
-    setTodoId(state, action: PayloadAction<number>) {
+    setTodoId: (state, action: PayloadAction<number>) => {
       state.todoId = action.payload;
     },
-    addTask(state) {
+    addTask: (state) => {
       if (state.textInput.trim() !== "") {
         state.tasks.push({
           id: state.todoId,
@@ -38,24 +38,24 @@ const tasksSlice = createSlice({
         state.textInput = "";
       }
     },
-    toggleTaskDone(state, action: PayloadAction<number>) {
+    toggleTaskDone: (state, action: PayloadAction<number>) => {
       const task = state.tasks.find((t) => t.id === action.payload);
       if (task) task.done = !task.done;
     },
-    deleteTask(state, action: PayloadAction<number>) {
+    deleteTask: (state, action: PayloadAction<number>) => {
       state.tasks = state.tasks.filter((t) => t.id !== action.payload);
     },
-    deleteDoneTasks(state, action: PayloadAction<boolean>) {
+    deleteDoneTasks: (state, action: PayloadAction<boolean>) => {
       state.tasks = state.tasks.filter((t) => t.done !== action.payload);
     },
-    setEditingTask(state, action: PayloadAction<{ id: number; text: string }>) {
+    setEditingTask: (state, action: PayloadAction<{ id: number; text: string }>) => {
       state.editingTaskId = action.payload.id;
       state.editingTaskText = action.payload.text;
     },
-    setEditingTaskText(state, action: PayloadAction<string>) {
+    setEditingTaskText: (state, action: PayloadAction<string>) => {
       state.editingTaskText = action.payload;
     },
-    saveTask(state, action: PayloadAction<number>) {
+    saveTask: (state, action: PayloadAction<number>) => {
       const task = state.tasks.find((t) => t.id === action.payload);
       if (task && state.editingTaskText.trim() !== "") {
         task.text = state.editingTaskText;
@@ -66,19 +66,4 @@ const tasksSlice = createSlice({
   },
 });
 
-export const { actions, reducer } = tasksSlice
-
-// export const {
-//   setFilter,
-//   setTextInput,
-//   setTodoId,
-//   addTask,
-//   toggleTaskDone,
-//   deleteTask,
-//   deleteDoneTasks,
-//   setEditingTask,
-//   setEditingTaskText,
-//   saveTask,
-// } = tasksSlice.actions;
-
-// export default tasksSlice.reducer;
+export const { actions, reducer } = tasksSlice;

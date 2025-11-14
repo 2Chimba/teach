@@ -8,7 +8,7 @@ import type { ICart } from "../../Interfaces/interfaces";
 import styles from "./cart.module.css";
 
 export const Cart = ({
-  visibleTasks,
+  filteredTasks,
   toggleDone,
   editingTaskId,
   editingTaskText,
@@ -20,7 +20,7 @@ export const Cart = ({
   return (
     <LayoutGroup>
       <AnimatePresence>
-        {visibleTasks.map((item, index) => (
+        {filteredTasks.map((item, index) => (
           <motion.div
             layout
             initial={{ opacity: 0, x: -100 }}
