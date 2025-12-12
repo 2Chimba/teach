@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-<<<<<<< HEAD
 import styles from "./filterButtons.module.css";
 
 interface FilterButton {
@@ -7,11 +6,6 @@ interface FilterButton {
   deleteDone: (value: boolean) => void;
 }
 
-=======
-import type { FilterButton } from "../../Interfaces/interfaces";
-import styles from "./filterButtons.module.css";
-
->>>>>>> 72e0c6d7095d3c0d9d4c7405d32e29a6253e44f0
 export const FilterButtons = ({ setFilter, deleteDone }: FilterButton) => {
   return (
     <div className={styles.filter__buttons}>

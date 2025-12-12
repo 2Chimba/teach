@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-<<<<<<< HEAD
 import type { Task } from "../../../Interfaces/interfaces";
 import { SquarePen } from "lucide-react";
 import styles from "../button.module.css";
@@ -53,36 +52,3 @@ export const EditButton = ({ item, editTask }: IEditButton) => {
   );
 };
 
-// return (
-//     <div className={styles.editingArea}>
-//       {editingTaskId === item.id && (
-//         <motion.input
-//           className={styles.input__editing}
-//           value={editingTaskText}
-//           onChange={(e) => setEditingTaskText(e.target.value)}
-//           onKeyDown={(e) => saveTask(e, item.id)}
-//           autoFocus
-//           initial={{ width: 30, height: 30, borderRadius: 15 }}
-//           animate={{ width: 300, height: 30, borderRadius: 15 }}
-//           transition={{ duration: 1 }}
-//         />
-//       )}
-//     </div>
-//   );
-=======
-import type { IEditButton } from "../../../Interfaces/interfaces";
-import { SquarePen } from "lucide-react";
-import styles from "../button.module.css";
-
-export const EditButton = ({ handleEditClick, item }: IEditButton) => {
-  return (
-    <motion.button
-      className={styles.cart__button}
-      whileHover={{ rotate: 30 }}
-      onClick={() => handleEditClick(item.id, item.text)}
-    >
-      <SquarePen />
-    </motion.button>
-  );
-};
->>>>>>> 72e0c6d7095d3c0d9d4c7405d32e29a6253e44f0
