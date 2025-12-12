@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+<<<<<<< HEAD
 import type { Task } from "../../Interfaces/interfaces";
 import styles from "./checkbox.module.css";
 
@@ -7,6 +8,11 @@ interface ICheckbox {
   toggleDone: (id: number) => void;
 }
 
+=======
+import type { ICheckbox } from "../../Interfaces/interfaces";
+import styles from "./checkbox.module.css";
+
+>>>>>>> 72e0c6d7095d3c0d9d4c7405d32e29a6253e44f0
 export const CartCheckbox = ({ item, toggleDone }: ICheckbox) => {
   return (
     <div className={styles.cart__checkbox}>

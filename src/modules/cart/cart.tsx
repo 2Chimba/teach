@@ -1,6 +1,7 @@
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { CartCheckbox } from "../../ui/checkbox/checkbox";
 import { CartText } from "../../ui/cartText/cartText";
+<<<<<<< HEAD
 import { EditButton } from "../../ui/buttons/editButton/editButton";
 import { DeleteButton } from "../../ui/buttons/deleteButton/deleteButton";
 import type { Task } from "../../Interfaces/interfaces";
@@ -17,6 +18,22 @@ export const Cart = ({
   filteredTasks,
   toggleDone,
   editTask,
+=======
+import { EditingText } from "../../ui/editingText/editingText";
+import { EditButton } from "../../ui/buttons/editButton/editButton";
+import { DeleteButton } from "../../ui/buttons/deleteButton/deleteButton";
+import type { ICart } from "../../Interfaces/interfaces";
+import styles from "./cart.module.css";
+
+export const Cart = ({
+  filteredTasks,
+  toggleDone,
+  editingTaskId,
+  editingTaskText,
+  setEditingTaskText,
+  saveTask,
+  handleEditClick,
+>>>>>>> 72e0c6d7095d3c0d9d4c7405d32e29a6253e44f0
   deleteItem,
 }: ICart) => {
   return (
@@ -39,8 +56,21 @@ export const Cart = ({
 
             <CartText item={item} />
 
+<<<<<<< HEAD
             <div className={styles.container__cartButtons}>
               <EditButton editTask={editTask} item={item} />
+=======
+            <EditingText
+              editingTaskId={editingTaskId}
+              item={item}
+              editingTaskText={editingTaskText}
+              setEditingTaskText={setEditingTaskText}
+              saveTask={saveTask}
+            />
+
+            <div className={styles.container__cartButtons}>
+              <EditButton handleEditClick={handleEditClick} item={item} />
+>>>>>>> 72e0c6d7095d3c0d9d4c7405d32e29a6253e44f0
               <DeleteButton deleteItem={deleteItem} item={item} />
             </div>
           </motion.div>

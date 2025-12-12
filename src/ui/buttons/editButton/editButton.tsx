@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+<<<<<<< HEAD
 import type { Task } from "../../../Interfaces/interfaces";
 import { SquarePen } from "lucide-react";
 import styles from "../button.module.css";
@@ -68,3 +69,20 @@ export const EditButton = ({ item, editTask }: IEditButton) => {
 //       )}
 //     </div>
 //   );
+=======
+import type { IEditButton } from "../../../Interfaces/interfaces";
+import { SquarePen } from "lucide-react";
+import styles from "../button.module.css";
+
+export const EditButton = ({ handleEditClick, item }: IEditButton) => {
+  return (
+    <motion.button
+      className={styles.cart__button}
+      whileHover={{ rotate: 30 }}
+      onClick={() => handleEditClick(item.id, item.text)}
+    >
+      <SquarePen />
+    </motion.button>
+  );
+};
+>>>>>>> 72e0c6d7095d3c0d9d4c7405d32e29a6253e44f0
