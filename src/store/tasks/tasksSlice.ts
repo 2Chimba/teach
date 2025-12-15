@@ -2,7 +2,7 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { IInitialState } from "./types";
 
 const initialState: IInitialState = {
-  tasks: [],
+  tasks: JSON.parse(localStorage.getItem("tasks") ?? "[]"),
   filter: "all",
 };
 
@@ -12,7 +12,6 @@ export const tasksSlice = createSlice({
   reducers: {
     addTask: (state, action) => {
       state.tasks.push(action.payload);
-      // localStorage.setItem("tasks", JSON.stringify(state.tasks));
     },
     toggleTaskDone: (state, action: PayloadAction<number>) => {
       const task = state.tasks.find((t) => t.id === action.payload);

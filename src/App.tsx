@@ -7,7 +7,7 @@ import { QuanityInformation } from "./modules/QuanityInformation/quanityInformat
 import { EmptyTasks } from "./modules/EmptyTasks/emptyTasks.tsx";
 import { useAppSelector } from "./store/store.ts";
 import { useActions } from "./hooks/useActions.ts";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
 function App() {
   const {
@@ -34,10 +34,9 @@ function App() {
     }
   }, [tasks, filter]);
 
-  // useEffect(() => {
-  //   const currentTasks = localStorage.getItem("tasks");
-  //   if (currentTasks) setTasks(JSON.parse(currentTasks) as unknown as Task[]);
-  // }, [setTasks]);
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   return (
     <>
